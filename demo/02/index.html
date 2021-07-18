@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Confess to You</title>
+  <meta name="keywords" content="爱心树,表白,计时器">
+  <meta name="description" content="爱心树表白计时器">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="baidu-site-verification" content="code-gZR6EVVpaO" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="stylesheet" href="css/default.css" />
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jscex.min.js"></script>
+  <script src="js/jscex-parser.js"></script>
+  <script src="js/jscex-jit.js"></script>
+  <script src="js/jscex-builderbase.min.js"></script>
+  <script src="js/jscex-async.min.js"></script>
+  <script src="js/jscex-async-powerpack.min.js"></script>
+  <script src="js/functions.js" charset="utf-8"></script>
+  <script src="js/love.js" charset="utf-8"></script>
+</head>
+
+<body>
+  <div id="main">
+    <div id="error">
+      本页面采用HTML5编辑，目前您的浏览器无法显示，请换成谷歌(<a href="https://www.google.cn/chrome/">Chrome</a>)
+      或者火狐(<a href="https://www.firefox.com.cn/download/">Firefox</a>)浏览器，或者其他游览器的最新版本。
+    </div>
+    <div id="wrap">
+      <div id="text">
+        <div id="code">
+          <font color="#FF0000">
+            <span class="say">亲爱的碧霞：</span><br>
+            <span class="say">或许是缘分，或许是注定，我们认识了彼此</span><br>
+            <span class="say">从陌生到熟悉，彼此谈天说地，诉说心声</span><br>
+            <span class="say">谢谢你的出现使我简单的生活变得有些不一样</span><br>
+            <span class="say">不再是每天只有工作，还有于你分享周遭生活趣事</span><br>
+            <span class="say">不再是独自到点睡觉，还有与你互道晚安再入梦乡</span><br>
+            <span class="say">我喜欢你，喜欢你的简单，善良，温柔</span><br>
+            <span class="say">虽然今天没有给你一个仪式感的表白</span><br>
+            <span class="say">也不知道现在的我可以给你带来什么</span><br>
+            <span class="say">但是我会用行动证明一切</span><br>
+            <span class="say">我会带你去所有你想去的地方，陪你闹看你笑</span><br>
+            <span class="say">历经你生命中所有的点点滴滴</span><br>
+            <span class="say">我期待这一生与你一起走过</span><br>
+            <span class="say">牵着你的手，从行动到古稀</span><br>
+            <span class="say">我会为我们的未来撑起一片天空</span><br>
+            <span class="say">为我们的将来担负起一生的责任</span><br>
+            <span class="say">或许你过去的三十个春秋，我缺席了</span><br>
+            <span class="say">但此时此刻我想下单，预定你的余生</span><br>
+            <span class="say">不知你可否确认一下订单</span><br>
+            <span class="say"><span class="space"></span> -- 小叶</span>
+          </font>
+        </div>
+      </div>
+      <div id="clock-box">
+        <span>
+          <font color="#666">现在是我们相识的</font>
+        </span>
+        <div id="clock"></div>
+      </div>
+      <canvas id="canvas" width="1100" height="680"></canvas>
+    </div>
+  </div>
+  <div id="audio-box">
+    <script type="text/javascript">
+      window.onload = function () {
+        var arr = ["audio/bgm3.mp3", "audio/bgm2.mp3", "audio/bgm1.mp3"]; //把需要播放的歌曲从后往前排，这里已添加两首音乐，可继续添加多个音乐
+        var myAudio = new Audio();
+        myAudio.preload = true;
+        myAudio.controls = false;
+        myAudio.src = arr.pop(); //每次读数组最后一个元素
+        myAudio.addEventListener("ended", playEndedHandler, false);
+        myAudio.play();
+        document.getElementById("audio-box").appendChild(myAudio);
+        myAudio.loop = false; //禁止循环，否则无法触发ended事件
+        function playEndedHandler() {
+          myAudio.src = arr.pop();
+          myAudio.play();
+          !arr.length &&
+            myAudio.removeEventListener("ended", playEndedHandler, false); //只有一个元素时解除绑定
+        }
+      };
+    </script>
+  </div>
+  <script>
+    (function () {
+      var canvas = $("#canvas");
+      if (!canvas[0].getContext) {
+        $("#error").show();
+        return false;
+      }
+      var width = canvas.width();
+      var height = canvas.height();
+      canvas.attr("width", width);
+      canvas.attr("height", height);
+      var opts = {
+        seed: {
+          x: width / 2 - 20,
+          color: "rgb(190, 26, 37)",
+          scale: 2
+        },
+        branch: [
+          [535, 680, 570, 250, 500, 200, 30, 100, [
+            [540, 500, 455, 417, 340, 400, 13, 100, [
+              [450, 435, 434, 430, 394, 395, 2, 40]
+            ]],
+            [550, 445, 600, 356, 680, 345, 12, 100, [
+              [578, 400, 648, 409, 661, 426, 3, 80]
+            ]],
+            [539, 281, 537, 248, 534, 217, 3, 40],
+            [546, 397, 413, 247, 328, 244, 9, 80, [
+              [427, 286, 383, 253, 371, 205, 2, 40],
+              [498, 345, 435, 315, 395, 330, 4, 60]
+            ]],
+            [546, 357, 608, 252, 678, 221, 6, 100, [
+              [590, 293, 646, 277, 648, 271, 2, 80]
+            ]]
+          ]]
+        ],
+        bloom: {
+          num: 700,
+          width: 1080,
+          height: 650,
+        },
+        footer: {
+          width: 1200,
+          height: 5,
+          speed: 10,
+        }
+      }
+      var tree = new Tree(canvas[0], width, height, opts);
+      var seed = tree.seed;
+      var foot = tree.footer;
+      var hold = 1;
+      canvas.click(function (e) {
+        var offset = canvas.offset(), x, y;
+        x = e.pageX - offset.left;
+        y = e.pageY - offset.top;
+        if (seed.hover(x, y)) {
+          hold = 0;
+          canvas.unbind("click");
+          canvas.unbind("mousemove");
+          canvas.removeClass('hand');
+        }
+      }).mousemove(function (e) {
+        var offset = canvas.offset(), x, y;
+        x = e.pageX - offset.left;
+        y = e.pageY - offset.top;
+        canvas.toggleClass('hand', seed.hover(x, y));
+      });
+      var seedAnimate = eval(Jscex.compile("async", function () {
+        seed.draw();
+        while (hold) {
+          $await(Jscex.Async.sleep(10));
+        }
+        while (seed.canScale()) {
+          seed.scale(0.95);
+          $await(Jscex.Async.sleep(10));
+        }
+        while (seed.canMove()) {
+          seed.move(0, 2);
+          foot.draw();
+          $await(Jscex.Async.sleep(10));
+        }
+      }));
+      var growAnimate = eval(Jscex.compile("async", function () {
+        do {
+          tree.grow();
+          $await(Jscex.Async.sleep(10));
+        } while (tree.canGrow());
+      }));
+      var flowAnimate = eval(Jscex.compile("async", function () {
+        do {
+          tree.flower(2);
+          $await(Jscex.Async.sleep(10));
+        } while (tree.canFlower());
+      }));
+      var moveAnimate = eval(Jscex.compile("async", function () {
+        tree.snapshot("p1", 240, 0, 610, 680);
+        while (tree.move("p1", 500, 0)) {
+          foot.draw();
+          $await(Jscex.Async.sleep(10));
+        }
+        foot.draw();
+        tree.snapshot("p2", 500, 0, 610, 680);
+        // 会有闪烁不得意这样做, (＞﹏＜)
+        canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")");
+        canvas.css("background", "#ffe");
+        $await(Jscex.Async.sleep(300));
+        canvas.css("background", "none");
+      }));
+      var jumpAnimate = eval(Jscex.compile("async", function () {
+        var ctx = tree.ctx;
+        while (true) {
+          tree.ctx.clearRect(0, 0, width, height);
+          tree.jump();
+          foot.draw();
+          $await(Jscex.Async.sleep(25));
+        }
+      }));
+      var textAnimate = eval(Jscex.compile("async", function () {
+        var together = new Date();
+        together.setFullYear(2020, 10, 28); //时间年月日
+        together.setHours(12);              //小时
+        together.setMinutes(34);            //分钟
+        together.setSeconds(0);             //秒前一位
+        together.setMilliseconds(0);        //秒第二位
+        $("#code").show().typewriter();
+        $("#clock-box").fadeIn(500);
+        while (true) {
+          timeElapse(together);
+          $await(Jscex.Async.sleep(1000));
+        }
+      }));
+      var runAsync = eval(Jscex.compile("async", function () {
+        $await(seedAnimate());
+        $await(growAnimate());
+        $await(flowAnimate());
+        $await(moveAnimate());
+        textAnimate().start();
+        $await(jumpAnimate());
+      }));
+      runAsync().start();
+    })();
+  </script>
+</body>
+
+</html>

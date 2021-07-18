@@ -1,0 +1,97 @@
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Confess to You</title>
+  <meta name="keywords" content="心形,表白,计时器">
+  <meta name="description" content="心形表白计时器">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="baidu-site-verification" content="code-gZR6EVVpaO" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+  <script src="js/jquery.js"></script>
+  <!-- 图片幻灯片效果-->
+  <script src="js/roundabout.js"></script>
+  <script src="js/roundabout_shapes.js"></script>
+  <script src="js/gallery_init.js"></script>
+  <!-- 下雪-->
+  <script src="js/snowstorm.js"></script>
+  <!-- 打字机效果-->
+  <script src="js/text.js"></script>
+  <!-- 画爱心-->
+  <script src="js/ga.js" async=""></script>
+  <script src="js/heart.js"></script>
+  <!-- 移动div-->
+  <script src="js/move.js"></script>
+  <!-- 显示时间 -->
+  <script src="js/time.js"></script>
+  <!-- 设置文字跟随鼠标 -->
+  <script src="js/makesnake.js"></script>
+</head>
+
+<body>
+  <script>
+    setTimeout(makesnake, 42000);
+  </script>
+  <!--#Header-->
+  <div id="header" style="opacity:0.85">
+    <div id="title">
+      I Love You Forever
+    </div>
+  </div>
+  <!-- #myContent -->
+  <div id="myContent"></div>
+  <div id="contentToWrite" style="display:none">
+    一时间不知道从哪说起, <br>
+    真爱来了，我们要好好把握。不管面临多大的压力，<br>
+    不管前面的路如何崎岖。<br>
+    不管经历过什么，我仍坚信最浪漫的事就是和<br>
+    你一起慢慢变老.<br>
+    还记得否,曾经的点点滴滴，从相识到现在，<br>
+    从冷漠到关心，从谢绝到依赖，从生疏到相爱，<br>
+    一切似乎都是那么遥远,又似乎那么触手可及。<br>
+    正如某人说的那样，但求岁月静好，现世安稳。<br>
+    一生守候不是一句简单而苍白的山盟海誓，<br>
+    而是无数个平淡的日子同舟共济，相濡以沫。<br>
+    相信右下角的计时器,将永远继续下去,直至数据溢出。<br>
+    <br>
+    -----------------------Just for You<br>
+  </div>
+  <script>
+    writeContent(true);
+  </script>
+  <!-- #container -->
+  <div id="container">
+    <ul id="myRoundabout">
+      <li><img src="img/slide1.jpg" alt=""></li>
+      <li><img src="img/slide2.jpg" alt=""></li>
+      <li><img src="img/slide5.jpg" alt=""></li>
+      <li><img src="img/slide3.jpg" alt=""></li>
+      <li><img src="img/slide4.jpg" alt=""></li>
+    </ul>
+  </div>
+  <script>
+    setTimeout(move, 15000);
+  </script>
+  <!-- #bg -->
+  <div id="bg">
+    <canvas id="garden">
+      <c style="color:#FFF;text-shadow:2px 3px 3px #222;font-family:Microsoft YaHei;font-size:50px">
+        你的浏览器过时了,试试谷歌浏览器吧!
+      </c>
+    </canvas>
+  </div>
+  <!-- #time -->
+  <div id="time">
+    <span id="show"></span>
+    <script>
+      setTimeout("showTime()", 40000);
+    </script>
+  </div>
+  <!-- #footer-->
+  <div id="footer">
+    <embed src="" loop="true" width="0px" height="0px" hidden="false"></embed> <a href="/" </a>
+  </div>
+</body>
+
+</html>
